@@ -4,6 +4,7 @@ import { z } from "zod";
 export const env = createEnv({
   server: {
     NODE_ENV: z.enum(["development", "production", "test"]),
+    DATABASE_URL: z.string().min(1),
   },
   client: {
     NEXT_PUBLIC_BASE_URL: z.string().min(1),
@@ -12,6 +13,7 @@ export const env = createEnv({
   runtimeEnv: {
     // Server Side
     NODE_ENV: process.env.NODE_ENV,
+    DATABASE_URL: process.env.DATABASE_URL,
 
     // Client Accessible
     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
