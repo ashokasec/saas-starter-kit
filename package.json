@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "biome:format": "biome format --write .",
+    "biome:lint": "biome lint --write .",
+    "biome:check": "biome check --write ."
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.13.4",
@@ -16,6 +19,7 @@
     "zod": "^3.24.4"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

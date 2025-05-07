@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Script from "next/script";
-import { idJsonObject, seo } from "@/lib/config/seo";
-import { inter } from "@/lib/fonts";
 import { app, team } from "@/lib/config/app";
+import { idJsonObjectHTML, seo } from "@/lib/config/seo";
+import { inter } from "@/lib/fonts";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: seo.title,
@@ -35,27 +35,25 @@ export const metadata: Metadata = {
   creator: team.founder.name,
 };
 
-const idJsonObjectHTML = { __html: JSON.stringify(idJsonObject) };
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-    return (
-        <html lang="en" suppressHydrationWarning>
-            <body
-                className="antialiased min-h-screen overflow-x-hidden"
-                style={inter.style}
-            >
-                <Script
-                    id="jsonld"
-                    type="application/ld+json"
-                    // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
-                    dangerouslySetInnerHTML={idJsonObjectHTML}
-                />
-                {children}
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className="antialiased min-h-screen overflow-x-hidden"
+        style={inter.style}
+      >
+        <Script
+          id="jsonld"
+          type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+          dangerouslySetInnerHTML={idJsonObjectHTML}
+        />
+        {children}
+      </body>
+    </html>
+  );
 }
