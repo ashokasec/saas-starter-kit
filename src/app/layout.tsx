@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Provider from "@/components/provider";
 import { app, team } from "@/lib/config/app";
 import { idJsonObjectHTML, seo } from "@/lib/config/seo";
 import { inter } from "@/lib/fonts";
@@ -52,7 +53,7 @@ export default function RootLayout({
           // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
           dangerouslySetInnerHTML={idJsonObjectHTML}
         />
-        {children}
+        <Provider>{children}</Provider>
       </body>
     </html>
   );

@@ -1,5 +1,5 @@
+import { createTable } from "@/server/db/create-table";
 import { boolean, text, timestamp, uuid } from "drizzle-orm/pg-core";
-import { createTable } from "../../create-table";
 
 export const todoTable = createTable("todo", {
   id: uuid("id").primaryKey().defaultRandom().notNull(),

@@ -1,4 +1,4 @@
-import { env } from "../env";
+import { env } from "@/lib/env";
 
 export const app = {
   name: "SAAS Starter Kit",
