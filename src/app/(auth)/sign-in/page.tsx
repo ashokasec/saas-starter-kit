@@ -1,5 +1,11 @@
 "use client";
 
+import {
+  AuthDescription,
+  AuthHeader,
+  AuthSectionContainer,
+  BackToHome,
+} from "@/components/auth-ui";
 import { Google } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
@@ -13,12 +19,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
-import {
-  AuthHeader,
-  AuthDescription,
-  AuthSectionContainer,
-  BackToHome,
-} from "@/components/auth-ui";
 
 const signInFormSchema = z.object({
   email: z.string().email({
