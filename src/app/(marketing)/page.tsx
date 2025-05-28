@@ -1,77 +1,131 @@
-import { Button } from "@/components/ui/button";
-import { geistSans } from "@/lib/fonts";
-import { ArrowRight } from "lucide-react";
+"use client";
+
+import { HotkeyProvider } from "@/components/hotkey-provider";
+import { app } from "@/lib/config/app";
+import { epilogue } from "@/lib/fonts";
+import { Asterisk } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
 const page = () => {
   return (
-    <>
-      <section>
-        <div className="relative pt-24 md:pt-36">
-          <div className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)]" />
-          <div className="mx-auto max-w-7xl px-6 flex flex-col items-center justify-center">
-            <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
-              <Link
-                href="https://x.com/ashokasec"
-                className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950"
-              >
-                <span className="text-foreground text-sm">
-                  Introducing Link to Follow the Author
-                </span>
-                <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700" />
-
-                <div className="bg-background group-hover:bg-muted size-6 overflow-hidden rounded-full duration-500">
-                  <div className="flex w-12 -translate-x-1/2 duration-500 ease-in-out group-hover:translate-x-0">
-                    <span className="flex size-6">
-                      <ArrowRight className="m-auto size-3" />
-                    </span>
-                    <span className="flex size-6">
-                      <ArrowRight className="m-auto size-3" />
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            </div>
-
-            <h1
-              className="mt-8 text-center font-semibold text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem]"
-              style={geistSans.style}
+    <HotkeyProvider
+      shortcuts={[
+        {
+          key: "g",
+          action: () =>
+            window.open(
+              "https://github.com/ashokasec/saas-starter-kit",
+              "_blank",
+            ),
+        },
+        {
+          key: "d",
+          action: () => window.open("https://yourdomain.com/docs", "_blank"),
+        },
+      ]}
+    >
+      <main className="flex flex-col items-center justify-center min-h-screen px-6">
+        <div className="flex max-w-2xl justify-between w-full">
+          <div className="flex gap-2 items-center justify-center">
+            <div
+              style={epilogue.style}
+              className="text-[17px] font-semibold leading-none h-10 flex items-center text-blue-600"
             >
-              Dude Make Your Own Landing Page
-            </h1>
-            <p className="mx-auto mt-8 text-center max-w-2xl text-balance text-lg">
-              Highly customizable components for building modern websites and
-              applications that look and feel the way you mean it.
-            </p>
-
-            <div className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row">
-              <div
-                key={1}
-                className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5"
-              >
-                <Button asChild size="lg" className="rounded-xl px-5 text-base">
-                  <Link href="#link">
-                    <span className="text-nowrap">Ahh Okay</span>
-                  </Link>
-                </Button>
-              </div>
-              <Button
-                key={2}
-                asChild
-                size="lg"
-                variant="ghost"
-                className="h-10.5 rounded-xl px-5"
-              >
-                <Link href="#link">
-                  <span className="text-nowrap">No I Wont</span>
-                </Link>
-              </Button>
+              <Asterisk className="relative bottom-[2px] size-5 mr-1" />
+              {app.name}
             </div>
           </div>
         </div>
-      </section>
-    </>
+
+        <div className="max-w-2xl text-start w-full mt-8 space-y-8 text-neutral-800">
+          <p className="flex flex-col">
+            {/* This is visually hidden but accessible to crawlers and screen readers */}
+            <span className="sr-only">{app.name}</span>
+            is a modern SaaS starter kit that cuts weeks of setup into minutes.
+          </p>
+          <p>
+            It's built for developers who care about performance, developer
+            experience, and long-term maintainability — without the headache of
+            wiring everything from scratch.
+          </p>
+          <p>
+            With <strong className="font-semibold">Next.js</strong>,{" "}
+            <strong className="font-semibold">Drizzle ORM</strong>, and{" "}
+            <strong className="font-semibold">PostgreSQL</strong> at the core,{" "}
+            <span
+              style={epilogue.style}
+              className="font-semibold leading-none text-blue-600"
+            >
+              {app.name}
+            </span>{" "}
+            enforces scalable structure, type-safety, and best practices — so
+            you can skip the boring setup and start building real features.
+          </p>
+          <div className="text-foreground">
+            <p className="font-medium">What’s included:</p>
+            <ul className="list-disc mt-2 ml-5 space-y-1">
+              <li>
+                <span className="saturate-150 select-none hue-rotate-180">
+                  ⚡
+                </span>{" "}
+                Next.js 15 with App Router
+              </li>
+              <li>
+                <span className="saturate-150 select-none hue-rotate-[259deg]">
+                  🧠
+                </span>{" "}
+                PostgreSQL + Drizzle ORM (type-safe SQL)
+              </li>
+              <li>
+                <span className="saturate-150 select-none hue-rotate-[210deg]">
+                  🎨
+                </span>{" "}
+                Tailwind CSS + ShadCN UI components
+              </li>
+              <li>
+                <span className="saturate-150 select-none hue-rotate-180">
+                  🔐
+                </span>{" "}
+                Better-Auth integration
+              </li>
+              <li>
+                <span className="saturate-150 select-none hue-rotate-60">
+                  ✅
+                </span>{" "}
+                Zod + react-hook-form validation layer
+              </li>
+              <li>
+                <span className="saturate-150 select-none hue-rotate-180">
+                  🧹
+                </span>{" "}
+                Biome for formatting, linting & stability
+              </li>
+              <li>
+                <span className="saturate-150 select-none hue-rotate-180">
+                  🔒
+                </span>{" "}
+                @t3-oss/env-nextjs for env safety
+              </li>
+            </ul>
+          </div>
+          <div className="mt-12 flex gap-x-6 text-sm" style={epilogue.style}>
+            <Link href="/" className="px-0 text-blue-600 font-medium group">
+              [ <span className="group-hover:font-semibold">D</span> ]{" "}
+              <span className="group-hover:underline underline-offset-2">
+                Docs
+              </span>
+            </Link>
+            <Link href="/" className="px-0 text-blue-600 font-medium group">
+              [ <span className="group-hover:font-semibold">G</span> ]{" "}
+              <span className="group-hover:underline underline-offset-2">
+                Github
+              </span>
+            </Link>
+          </div>
+        </div>
+      </main>
+    </HotkeyProvider>
   );
 };
 
