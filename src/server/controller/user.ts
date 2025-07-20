@@ -1,8 +1,8 @@
-import type { User } from "better-auth";
+import { eq } from "drizzle-orm";
 import db from "../db";
 import { user } from "../db/schema";
-import { eq } from "drizzle-orm";
 
-export async function getUserById(userId: User["id"]) {
-  return await db.select().from(user).where(eq(user.id, userId)).limit(1);
-}
+export const getUserBy = async (key: "id" | "username", value: string) => {
+  const result = await db.select().from(user).where(eq(user[key], value));
+  return result[0];
+};

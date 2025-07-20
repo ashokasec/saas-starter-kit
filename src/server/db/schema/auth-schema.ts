@@ -4,6 +4,7 @@ import { boolean, text, timestamp } from "drizzle-orm/pg-core";
 export const user = createTable("user", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
+  username: text("username"),
   email: text("email").notNull().unique(),
   emailVerified: boolean("email_verified").notNull(),
   image: text("image"),
